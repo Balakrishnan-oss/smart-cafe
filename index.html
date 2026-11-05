@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eswar, Bala & Co — Smart Café Salem</title>
+    <link rel="icon" type="image/svg+xml" href="https://lh3.googleusercontent.com/aida/AEtjO1XZs9MuMQKEmNvDzp1fMXF7K-DJXdpK_tost2i6v0lD59W7LBOjThUtUpisLVlvNdB8IwESWp3YMEIz3UMLG4R7onvrczC-mRpVmSd3avF_Iw-Ou5iuAuBduesqysWyijXTFVO_LkIGAdn1UVZsNVgTfxnrGw7a3bSCkUIFdunbNPwX5tT2Lehj0bMenzqh-nIJTQ5jSy_TLmUi9rfiGikD3YeqK8aqo4Enau7WGkDKPQ" />
+
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#250f03',
+              secondary: '#a23f00',
+              'secondary-container': '#fd6c19',
+              background: '#fff9ed',
+              surface: '#f9f3e7',
+              'surface-container': '#f3ede1'
+            },
+            fontFamily: {
+              serif: ['Playfair Display', 'serif'],
+              sans: ['Plus Jakarta Sans', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-[#fff9ed] text-[#1d1c14] font-sans antialiased min-h-screen">
+    <!-- React Root Mount Point -->
+    <div id="root">
+      <!-- Loading Placeholder (Replaced immediately when React mounts) -->
+      <div id="initial-loader" class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-[#f3ede1] flex items-center justify-center mb-4 shadow-sm animate-pulse">
+          <span class="material-symbols-outlined text-[#a23f00] text-3xl">local_cafe</span>
+        </div>
+        <h2 class="font-serif text-2xl font-bold text-[#250f03] mb-1">Eswar, Bala &amp; Co</h2>
+        <p class="text-xs text-[#a23f00] font-semibold uppercase tracking-wider mb-3">Salem Junction &amp; NH44</p>
+        <p class="text-xs text-[#50443f]">Steeping Salem Degree Kaapi &amp; Mounting React App...</p>
+      </div>
+    </div>
+
+    <!-- React 18 Core & DOM: Local Vendor First, with CDN Fallback -->
+    <script src="/vendor/react.production.min.js"></script>
+    <script src="/vendor/react-dom.production.min.js"></script>
+    <script src="/vendor/supabase.js"></script>
+    <script>
+      if (!window.supabase) {
+        document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"><\/script>');
+      }
+    </script>
+    <script>
+      if (!window.React) {
+        document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"><\/script>');
+      }
+    </script>
+    <script>
+      if (!window.ReactDOM) {
+        document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"><\/script>');
+      }
+    </script>
+
+    <!-- Compiled React Application Bundle -->
+    <script src="/src/bundle.js"></script>
+  </body>
+</html>
