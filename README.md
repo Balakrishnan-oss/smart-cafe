@@ -87,3 +87,4 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
   - Password: `AdminSalemKaapi@2025!`
   - Role: `admin` (Live KOT queue management and Menu & Price Manager)
 # smart-cafe
+# smart-cafe
