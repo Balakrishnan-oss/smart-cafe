@@ -52,27 +52,7 @@
       </div>
     </div>
 
-    <!-- React 18 Core & DOM: Local Vendor First, with CDN Fallback -->
-    <script src="/vendor/react.production.min.js"></script>
-    <script src="/vendor/react-dom.production.min.js"></script>
-    <script src="/vendor/supabase.js"></script>
-    <script>
-      if (!window.supabase) {
-        document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"><\/script>');
-      }
-    </script>
-    <script>
-      if (!window.React) {
-        document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"><\/script>');
-      }
-    </script>
-    <script>
-      if (!window.ReactDOM) {
-        document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"><\/script>');
-      }
-    </script>
-
-    <!-- Compiled React Application Bundle -->
-    <script src="/src/bundle.js"></script>
+    <!-- Main Application Entry Point -->
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

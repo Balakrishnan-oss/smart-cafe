@@ -38,15 +38,18 @@ const server = http.createServer((req, res) => {
   }
 
   const safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
-  let filePath = path.join(ROOT_DIR, safePath);
+  let filePath = path.join(ROOT_DIR, 'dist', safePath);
 
-  // Check if file exists directly, or under public/ directory
   if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
-    const publicPath = path.join(ROOT_DIR, 'public', safePath);
-    if (fs.existsSync(publicPath) && fs.statSync(publicPath).isFile()) {
-      filePath = publicPath;
-    } else {
-      filePath = path.join(ROOT_DIR, 'index.html');
+    filePath = path.join(ROOT_DIR, safePath);
+    if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+      const publicPath = path.join(ROOT_DIR, 'public', safePath);
+      if (fs.existsSync(publicPath) && fs.statSync(publicPath).isFile()) {
+        filePath = publicPath;
+      } else {
+        const distIndex = path.join(ROOT_DIR, 'dist', 'index.html');
+        filePath = fs.existsSync(distIndex) ? distIndex : path.join(ROOT_DIR, 'index.html');
+      }
     }
   }
 
@@ -70,10 +73,17 @@ const server = http.createServer((req, res) => {
   });
 });
 
+let currentPort = PORT;
+
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
-    console.warn(`Port ${PORT} in use, attempting ${PORT + 1}...`);
-    server.listen(PORT + 1, HOST);
+    currentPort += 1;
+    if (currentPort <= PORT + 5) {
+      console.warn(`Port in use, attempting ${currentPort}...`);
+      setTimeout(() => server.listen(currentPort, HOST), 100);
+    } else {
+      console.error('Could not find an available port.');
+    }
   } else {
     console.error('Server error:', err);
   }
